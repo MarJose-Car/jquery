@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Entrainement Jquery</title>
+        <style>
+            button {
+                background: rgb(248, 212, 4);
+                border-color: yellowgreen;
+            }
+            h2 {
+                border:1px solid gray;
+                margin: 0;
+                padding: 5px;
+            }
+            h2+div {
+                background: gray;
+                height: 200px;
+            }
+            #cube {
+                width: 100px;
+                height: 100px;
+                background: blue;
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1">
+            <h2>Contenu de ma div 1</h2>
+        </div>
+        <button id="b1" style="display:none">Show</button>
+        <button id="b2">Hide</button>
+        <button id="b3">Toggle</button>
+        <hr>
+        <div id="div2">
+            <h2>Contenu de ma div 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus sit natus suscipit architecto magnam aut, nihil consequuntur recusandae, repellendus iste distinctio nobis rerum vel nisi. Enim voluptatum dolorum quasi officia. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta eligendi, ipsam cum perspiciatis quae dolorum iusto magni nostrum tempore vel error necessitatibus, dolores illo, fugit praesentium molestiae quos officiis corrupti! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium iusto mollitia laborum at commodi similique esse exercitationem alias debitis! Autem tempore eaque velit rerum quis reiciendis non, accusantium voluptatem dolores.             
+                <img src="../01_selecteurs/b.jpg" alt="mon image"
+                style=" width:200px; float:left;">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quod alias adipisci totam, eum magni possimus quia reprehenderit iste accusantium aut quis excepturi vel. Dolores, commodi. Voluptas aperiam dolor iusto!Loremlo Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque accusantium porro aliquid ullam labore dicta quo rerum, sed ipsam necessitatibus voluptatibus voluptatem qui voluptas, quis blanditiis assumenda magnam? Facilis, excepturi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae perspiciatis reprehenderit vel at excepturi nulla explicabo a itaque velit necessitatibus fugiat, iusto consequatur blanditiis autem illo adipisci aut, eum dolores! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima fugit hic magnam perspiciatis quae quas architecto, nemo ullam rerum tempore tempora voluptates dolorem id atque quasi doloribus eius officiis ipsum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus reiciendis maiores incidunt distinctio nisi, ipsam quam quod amet cum saepe hic consequuntur quis at provident adipisci eum unde autem beatae?
+                </p>
+        </div>
+        <button id="b4">FadeIn</button>
+        <button id="b5">FadeOut</button>
+        <button id="b6">FadeToggle</button>
+        <button id="b7">FadeTo</button>
+        <h2 id="titre1">Titre 1</h2>
+        <div id="contenu1" class="contenu" style="display:none">Contenu 1</div>
+        <h2 id="titre2">Titre 2</h2>
+        <div id="contenu2" class="contenu">Contenu 2</div>
+        <h2 id="titre3">Titre 3</h2>
+        <div id="contenu3" class="contenu">Contenu 3</div>
+        <div id="cube">Cube</div>
+        <script src="../sources/jquery-3.4.1.js"></script>
+        <script>
+
+        //methode show() montre un élément si celui ci est display none (style="display:none")
+        $(function(){
+            $('#b1').click(function(){
+                $('#div1').show();
+                $('#b2').hide();
+                $('#b1').show();
+            });
+            // viser le b2 pour qu'il cache la div si elle est visible
+            $('#b2').click(function(){
+                $('#div1').hide();
+                $('#b2').hide();
+                $('#b1').show();
+            });
+            $('#b3').click(function(){
+                $('#div1').toggle();
+            });
+            //fadeToggle/fadeIn/fadeOut
+            $('#b4').click(function(){
+                $('#div2').fadeIn('3000');
+            });
+            //créer un fadeOut de #div2 en cliquant sur le #b5
+            $("#b5").click(function(){
+                $('#div2').fadeOut(2000);
+            });
+            //fadeToggle
+            $('#b6').click(function(){
+                $('#div2').fadeToggle(1000, function(){
+                    alert('Animation terminée !');
+                });
+            });
+            //fadeTo
+            $('#b7').click(function(){
+                $('#div2').fadeTo(2000, 0.5, function(){
+                    alert('Animation terminée !!!!');
+                });
+            });
+            //effet slide
+            //slideDown
+            $('#titre1').click(function(){
+                $('#contenu1').slideDown(2000, function(){
+                    alert('fini !');
+                });
+            });
+            $('#titre2').click(function(){
+                $("#contenu2").slideUp(2000);
+            });
+            $('#titre3').click(function(){
+                //  $('#contenu3').slideToggle(2000);
+                $('.contenu').slideToggle(2000);
+                $("#contenu1").slideUp(2000);
+                $("#contenu2").slideUp(2000);
+                // $("#contenu3").slideUp(2000);
+            });
+            //animate()
+            $('#cube').on('click',function(){
+                $(this).animate({
+                    'width':'200px',
+                    'height':'80px',
+                    'left':'100px',
+                    });
+            });
+        });
+
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Selecteurs Jquery</title>
+        <style>
+            .maClasse {
+                background: dodgerblue;
+                color: #fff;
+                /* padding: 5px; */
+                border: 1px solid gray;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Evenements</h1>
+        <main>
+            <article>
+                <p style="display:none;">Mon paragraphe</p>
+            </article>
+        </main>
+        <button id="button1">Click</button>
+        <button id="button2">Bouton 2</button>
+        <button id="button3">Bouton 3</button>
+        <button id="button4">Bouton 4</button>
+        <button id="button5">ToggleClass</button>
+    
+
+        <script src="../sources/jquery-3.4.1.js"></script>
+        <script>
+            // $(document).ready( function(){
+            //     alert('chargé');
+            $(function(){
+                $('h1').append(' Javascript');
+                $('#button1').click(function(){
+                    // alert('cliquez');
+                    //faire qu'au clic le text h1 se souligne
+                    $('#button1').click(function(){
+                        // $('<h1 style="text-decoration:underline;">');
+                        $('h1').css("text-decoration","underline");
+                    });
+                });
+                //un double clic sur le bouton 2 engendre un changement de couleur du body
+                $('#button2').dblclick(function(){
+                    // $('body').css("background","purple");
+                     $('body').css({"background":"purple","color":"pink","font-family":"serif"});
+                     //le mot clef "this" se refere à la selectionactive"$('#button2')"
+                    //  $('#button2').css("display","none");
+                      $(this).css("display", "none");
+                });
+                // $('#button3').toggle(
+                //     function(){
+                //         $('main').addClass('maClasse');
+                //     },
+                //     function(){
+                //          $('main').removeClass('maClasse');
+                //     }
+                // );
+                // $('#button3').mouseenter(function(){
+                //     $('main').addClass('maClasse');
+                // });
+
+                // $('#button3').mouseleave(function(){
+                //     $('main').removeClass('maClasse');
+                // });
+                //La methode .hover joue le role cumulé de mouseenter et mouseleave à travers deux fonctions, La première s'execute au survol, La seconde à la sortie de l'élément visé
+                $('#button3').hover(
+                function(){
+                    $('main').addClass('maClasse');
+                },
+                function(){
+                    $('main').removeClass('maClasse');
+                });
+                $('#button5').click(function(){
+                    $('h1').toggleClass('maClasse');
+                });
+                $('#button4').click(function(){
+                    $('p').toggle(2000);
+                });
+                //methode .on()
+                $('p').on("click",function(){
+                    $(this).append(' clic');
+                });
+                 //contrainte: selectionner article, puis vous allez donner un contour à main
+                 $('article').parent().css("border", "2px solid green");
+
+                 //retirons les marges du paragraphe à partir de la selection de son parent:article
+                 $('article').find('p').css('margin','0');
+                
+            });
+           
+
+        </script>
+           
+    </body>
+</html>
