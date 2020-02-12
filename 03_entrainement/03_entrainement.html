@@ -20,11 +20,15 @@
                 background: gray;
                 height: 200px;
             }
-            #cube {
+            #cube, #cube2 {
                 width: 100px;
                 height: 100px;
                 background: blue;
                 position: relative;
+            }
+            #cube2 {
+                background: tomato;
+                opacity: 0;
             }
         </style>
     </head>
@@ -54,7 +58,11 @@
         <div id="contenu2" class="contenu">Contenu 2</div>
         <h2 id="titre3">Titre 3</h2>
         <div id="contenu3" class="contenu">Contenu 3</div>
+        <h3 >Animation simple</h3>
         <div id="cube">Cube</div>
+        <hr>
+        <h3 style="position:relative;">Animation par étapes</h3>
+        <div id="cube2">Cube2</div>
         <script src="../sources/jquery-3.4.1.js"></script>
         <script>
 
@@ -119,6 +127,16 @@
                     'left':'100px',
                     });
             });
+            //animation par etapes
+            function etapes(){
+                $(this).animate({'opacity':'1'}, 1000);
+                $(this).animate({'left':'200px'}, 2000);
+                $(this).animate({'opacity':'0.5'}, 500);
+                $(this).animate({'left':'-200px'}, 2000);
+                // $(this).animate({ 'background': 'blue' }, 2000);animate ne fonctionne pas sur les couleurs
+            };
+            $('#cube2').mouseenter(etapes);
+            $('h3').click(etapes);
         });
 
 
