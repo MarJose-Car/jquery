@@ -28,6 +28,66 @@
                 background: tomato;
                 border: 1px solid red;
             }
+            #joueur {
+                width: 50%;
+                border: 2px solid grey;
+            }
+            #adversaire {
+                width: 200px;
+                height: 200px;
+                border: 2px solid black;
+            }
+            #resizable {
+                background: -o-linear-gradient(45deg, rgba(231,56,39,0.52) 0%, rgba(144,206,18,0.52) 23%, rgba(121,245,12,0.56) 29%, rgba(240,47,23,0.72) 54%, rgba(241,111,92,0.79) 65%, rgba(240,47,23,0.98) 96%, rgba(248,80,50,0.99) 98%, rgba(248,80,50,1) 99%);
+                background: -ms-linear-gradient(45deg, rgba(231,56,39,0.52) 0%, rgba(144,206,18,0.52) 23%, rgba(121,245,12,0.56) 29%, rgba(240,47,23,0.72) 54%, rgba(241,111,92,0.79) 65%, rgba(240,47,23,0.98) 96%, rgba(248,80,50,0.99) 98%, rgba(248,80,50,1) 99%);
+                background: linear-gradient(45deg, rgba(231,56,39,0.52) 0%, rgba(144,206,18,0.52) 23%, rgba(121,245,12,0.56) 29%, rgba(240,47,23,0.72) 54%, rgba(241,111,92,0.79) 65%, rgba(240,47,23,0.98) 96%, rgba(248,80,50,0.99) 98%, rgba(248,80,50,1) 99%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', endColorstr='#f85032', GradientType=1 );
+                border-radius: 10px 5px 10px 5px;
+                -moz-border-radius: 10px 1px 10px 1px;
+                -webkit-border-radius: 10px 1px 10px 1px;
+                border: 0px solid #947894;
+                width: 250px;
+                height: 250px;
+                border: 1px solid;
+            }
+            #resisable h5 {
+                background: lightblue;
+                text-align: center;
+                margin:0;
+                padding: 10px;
+            }
+            .ui-resizable-helper { 
+                border: 1px dotted red; 
+                background: rgba(247, 202, 209,05);
+            }
+            /*Selactable*/
+            /* classe du parent (la liste :ol) */
+            .ui-selectable {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+            }
+            /* classe de l'élémen selectionnable par default */
+            .ui-selectee {
+                background: grey;
+                color: white;
+                padding: 5px 10px;
+                border: 1 ps solid black;
+                width: 150px;
+                text-align: center;
+
+            }
+            /* class de l'élément en train d'être cliqué */
+            .ui-selecting {
+                background: #bbb;
+
+            }
+            /* classe de l'élémént une fois cliqué */
+            .ui-selected {
+                background: #222;
+                color: #fff;
+            }
             
         
         </style>
@@ -125,26 +185,61 @@
 
         <hr>
 
-      <div style="border:1px solid red; height:100vh">
-            <img id="image1" src="img/images/cheval_01.jpg" alt="cheval">
-            <img id="image4" src="img/images/cheval_04.jpg" alt="cheval">
-            <img id="image8" src="img/images/cheval_08.jpg" alt="cheval">
-            <img id="image6" src="img/images/cheval_06.jpg" alt="cheval">
-            <img id="image2" src="img/images/cheval_02.jpg" alt="cheval">
-            <img id="image9" src="img/images/cheval_09.jpg" alt="cheval">
-            <img id="image3" src="img/images/cheval_03.jpg" alt="cheval">
-            <img id="image7" src="img/images/cheval_07.jpg" alt="cheval">
-            <img id="image5" src="img/images/cheval_05.jpg" alt="cheval">
-      </div>
-
+        <div style="border:1px solid red; height:100vh">
+                <img id="image1" src="img/images/cheval_01.jpg" alt="cheval">
+                <img id="image4" src="img/images/cheval_04.jpg" alt="cheval">
+                <img id="image8" src="img/images/cheval_08.jpg" alt="cheval">
+                <img id="image6" src="img/images/cheval_06.jpg" alt="cheval">
+                <img id="image2" src="img/images/cheval_02.jpg" alt="cheval">
+                <img id="image9" src="img/images/cheval_09.jpg" alt="cheval">
+                <img id="image3" src="img/images/cheval_03.jpg" alt="cheval">
+                <img id="image7" src="img/images/cheval_07.jpg" alt="cheval">
+                <img id="image5" src="img/images/cheval_05.jpg" alt="cheval">
+        </div>
+        <div style="border:5px solid, blue;height: 80vh; display:flex; flex-wrap:wrap;justify-content: space-between;">
+            <h4 style="width:100%">Droppable</h4>
+        <div id="joueur">
+            <img id="pierre" src="img/images/pierre.png" alt="Pierre">
+            <img id="ciseaux" src="img/images/ciseaux.png" alt="Ciseaux">
+            <img id="feuille" src="img/images/feuille.png" alt="Feuille">
+        </div>
+        <div id="adversaire"></div>
+        <img id="img_adv" src="img/images/ciseaux.png" alt="Ciseaux">
+        </div>
+        <div id="ecran"></div>
+        <hr>
+        <div id="parent" style="border:5px solid, blue;height: 80vh;">
+            <h4>Resizable</h4>
+            <div id="resizable" style="overflow:scroll"> 
+                <h5>Redimensionnez-moi !</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore consequatur est dicta repellat molestiae harum at alias? Ipsam doloremque assumenda accusantium reprehenderit impedit, culpa pariatur, amet obcaecati provident, ipsum in. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto omnis quasi ducimus asperiores! Aut excepturi enim reprehenderit, ad ex non reiciendis. Tempore unde placeat ea iure culpa velit dignissimos quas. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat possimus nostrum facere doloribus sapiente ipsa, necessitatibus iusto doloremque, aperiam aut autem sint quis neque fugit, cupiditate culpa facilis. Deleniti, libero? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam soluta ratione laboriosam reprehenderit cupiditate quaerat, harum excepturi magni esse provident quod suscipit dolores quas cumque aliquam? Iure dolores facere libero.</p>
+        </div>
+        </div>
+        <textarea id="resizable" rows="5" cols="20">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, minima ipsam placeat totam quos quas quia distinctio possimus nostrum, consequuntur ullam, ad adipisci! Non in excepturi sapiente dolorum sit id. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur cumque error sequi rerum tenetur, amet delectus. Incidunt explicabo sequi odit tempora eum beatae, debitis iure. Quidem rerum excepturi iure modi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores eaque maxime est magnam eligendi. Nihil aliquid nisi aspernatur libero culpa porro iste repellendus obcaecati accusantium? Earum quaerat praesentium itaque aspernatur? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus asperiores quae ullam ut iusto natus nesciunt dolore expedita, aliquam molestias eligendi debitis! Cupiditate, amet ratione? Est ea aliquid illo voluptatibus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam illo porro vitae temporibus adipisci voluptatum nesciunt saepe alias eaque aut. Deserunt veritatis neque eaque dignissimos sed quasi alias blanditiis nam!</p>
+        </textarea>
+        <hr>
+        <h4>Selectable</h4>
+        <ol id="selectable">
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        
+        </ol>
+        <hr>
+        <h4>Date picker</h4>
+        <!--  Le date picker vient en remplacement de <input type="date"> tant que tous les navigateurs ne permettent pas son utilisation--> 
+        <input type="text" id="input" placeholder="Choisissez une date">
+        <hr>
+        <h4>Autocomplete</h4>
+        <input type="text" id="autocomplete">
         <!-- sript de jquery -->
+        
         <script src="../sources/jquery-3.4.1.js"></script>
         <script src="jquery-ui.js"></script>
-        
         <script>
             $(function () {
                 $("#accordion").accordion();
-
                 $('#ajoutClasse').click(function(){
                     $(this).toggleClass('nouvelleClasse', 2000);
                 })
@@ -172,7 +267,6 @@
                     event:"mouseover"
                 });
                 //rendre les images draggable()
-                
                 $('#image1').draggable({snap:"#image2,#image4", snapMode: "outer"});
                 $('#image2').draggable({snap:"#image1,#image3,#image5", snapMode: "outer" });
                 $('#image3').draggable({snap:"#image2,#image6", snapMode: "outer" });
@@ -182,16 +276,89 @@
                 $('#image7').draggable({snap:"#image4,#image8", snapMode: "outer" });
                 $('#image8').draggable({snap:"#image7,#image5,#image9", snapMode: "outer" });
                 $('#image9').draggable({snap:"#image6,#image8", snapMode: "outer" });
-
                 //changer le cursoeur: mousedown bouton de souris cliqué, mouseup bouton de souris relaché
                 $('img').mousedown(function(){
                     $(this).css('cursor','grabbing');
-
                 });
                 $('img').mouseup(function(){
                     $(this).css('cursor','grab');
                 });
-                
+                //Droppable
+                // $('#pierre').draggable();
+                // $('#ciseaux').draggable();
+                // $('#feuille').draggable();
+                $('#pierre, #ciseaux, #feuille').draggable({
+                    revert:"invalid"
+                });
+                $('#adversaire').droppable({
+                    accept:"#feuille, #pierre",
+                    drop:function(evenement,element){
+                        // alert('j\'accepte ces éléments');
+                        if(element.draggable.is("#pierre")){
+                            alert('j\'ai gagné');
+                            $('#adversaire').css('background','lime');
+                            // $('#ecran').html('<img src="img/images/cheval_07.jpg" alt="cheval">');
+                        }else{
+                            alert('j\'ai perdu');
+                             $('#adversaire').css('background', 'red');
+                        }
+                    }
+                });
+                // mettre en place un droppable sur le cadre gris (#joueur) pour pouvoir y renvoyer feuille et pierre
+                $('#joueur').droppable({
+                    accept:"#feuille, #pierre, #ciseaux",
+                    drop: function(){
+                        $(this).css("background", "pink");
+                    }
+                });
+                // function direBonjour(prenom){
+                //     document.write('Bonjour' + prenom);
+                // }
+                // direBonjour(' Hervé');
+                //RESIZABLE
+                $('#resizable').resizable({
+                    animate: true, 
+                    containment:"#parent",
+                    helper:"monHelper",
+                    maxHeight: 500,
+                    maxWidth: 650,
+                    minHeight: 250,
+                    minWidth: 250,
+                    aspectRatio: 2 / 2,
+                    grid: 50,
+                    ghost: true,
+                });
+                    $("#resizable").resizable({
+                        handles: "se",
+                });
+                //selectable()
+                $('#selectable').selectable({
+                    stop: function(){
+                        // alert('selection effectuée')
+                        console.log($('.ui-selected ').text());
+                    }
+                });
+                //datePicker
+                $("#input").datepicker({
+                        dateFormat: "dd-mm-yy",
+                        firstDay:1,
+                        monthNames: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "aout", "Septembre", "Octobre", "Novembre", "Decembre"],
+                        dayNames:["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],
+                        dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"]
+                });
+                //autocomplete
+
+                var mesTags = [
+                    "Paris",
+                    "Nantes",
+                    "Lyon",
+                    "Nice",
+                    "Lille",                  
+                ];
+                $('#autocomplete').autocomplete({
+                    source:mesTags
+                });
+
                
             });
         </script>
